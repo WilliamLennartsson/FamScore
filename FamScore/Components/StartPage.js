@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Alert } from 'react-native';
 
 class StartPage extends Component {
   render() {
@@ -11,6 +11,9 @@ class StartPage extends Component {
           alignItems: 'center',
         }}>
         <Button
+          onPress={() => {
+            Alert.alert('You tapped the button!');
+          }}
           title='Create Family'
           color='#841484'
           accessibilityLabel='Bror som är stor!'
