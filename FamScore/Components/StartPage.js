@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { View, Button, Alert } from 'react-native';
+import { View, Button, Alert, ImageBackground } from 'react-native';
 import { Actions } from 'react-native-router-flux'
+
 
 class StartPage extends Component {
   render() {
     return (
+      <ImageBackground
+        source={require('../assets/images/lovelovelove.jpg')} style={{ width: '100%', height: '100%' }}
+        >
       <View style={{
           flex: 1,
           flexDirection: 'column',
@@ -43,6 +47,7 @@ class StartPage extends Component {
         color='#841484'
       />
       </View>
+        </ImageBackground>
     );
   }
 }
