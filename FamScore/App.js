@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createStackNavigator } from 'react-native-navigation';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import MainMenu from './src/components/MainMenu/MainMenu'
 
