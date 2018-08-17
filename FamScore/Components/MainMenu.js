@@ -13,7 +13,7 @@ class MainMenu extends Component {
         }}>
           <Button
             onPress={() => {
-              Actions.StartPage();
+              Actions.ListView();
             }}
             title='Show mission'
             color='#000'
