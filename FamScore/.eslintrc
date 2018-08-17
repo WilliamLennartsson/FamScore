@@ -2,6 +2,7 @@
     "extends": "eslint-config-rallycoding",
     "rules": {
         "semi": "off",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "max-len": "off"
     }
 }
