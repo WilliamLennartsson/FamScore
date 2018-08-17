@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, Alert } from 'react-native';
+import { View, Button, Alert } from 'react-native';
 
 class StartPage extends Component {
   render() {

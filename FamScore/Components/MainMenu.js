@@ -19,10 +19,16 @@ class MainMenu extends Component {
             color='#000'
           />
           <Button
+            onPress={() => {
+              Actions.Rewards();
+            }}
             title='Rewards'
             color='#000'
           />
           <Button
+            onPress={() => {
+              Actions.Settings();
+            }}
             title='Settings'
             color='#000'
           />
