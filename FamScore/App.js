@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { createStackNavigator } from 'react-native-navigation';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import MainMenu from './src/components/MainMenu/MainMenu'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import ReduxThunk from 'redux-thunk'
+import reducers from './src/reducers'
+import Router from './Components/Router'
 
 export default class App extends Component {
   render() {
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
+
     return (
-      <MainMenu />
+      <Provider store={store}>
+        <Router />
+      </Provider>
     );
   }
 }

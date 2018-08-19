@@ -46,7 +46,8 @@ export default class ListItem extends Component {
 const styles = StyleSheet.create({
     viewStyle: {
         flex: 1,
-        backgroundColor: '#f4f9f4'
+        backgroundColor: '#f4f9f4',
+        marginBottom: 10
     },
     scrollViewStyle: {
         paddingTop: 25
