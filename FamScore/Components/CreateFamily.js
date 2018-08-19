@@ -19,18 +19,20 @@ class CreateFamily extends Component {
           value={name}
           color='#000'
           baseColor='#000000'
+          tintColor='#616161'
           onChangeText={(name) => this.setState({ name })}
         />
         <TextField
           label='Password'
           baseColor='#000'
+          tintColor='#616161'
+          secureTextEntry
           value={password}
           onChangeText={(password) => this.setState({ password })}
         />
       <Button
         title='Create'
         color='#000'
-        
         />
 
       </ImageBackground>
