@@ -4,15 +4,12 @@ import {
     View,
     StyleSheet
 } from 'react-native'
-import { Header } from './index'
 import ListItem from './ListItem'
 
 export default class MainMenu extends Component {
     render() {
         return (
             <View style={styles.viewStyle}>
-
-                <Header headerText="Make Your Mama Proud" />
 
                 <ScrollView style={styles.scrollViewStyle}>
 
