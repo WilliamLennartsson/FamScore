@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Button, ImageBackground } from 'react-native';
+import { Button, ImageBackground } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
-
 
 class CreateFamily extends Component {
   state = {
@@ -30,9 +29,9 @@ class CreateFamily extends Component {
           value={password}
           onChangeText={(password) => this.setState({ password })}
         />
-      <Button
-        title='Create'
-        color='#000'
+        <Button
+          title='Create'
+          color='#000'
         />
 
       </ImageBackground>
