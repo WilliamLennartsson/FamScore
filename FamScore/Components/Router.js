@@ -14,10 +14,10 @@ import { Fonts } from '../src/utils/Fonts'
 
 const RouterComponent = () => {
   return (
-    <Router navigationBarStyle={styles.sceneStyle} titleStyle={styles.titleStyle} barButtonTextStyle={styles.barButtonTextStyle} barButtonIconStyle={styles.barButtonIconStyle}>
-      <Scene key='root'>
+    <Router navigationBarStyle={styles.sceneStyle} titleStyle={styles.titleStyle} tintColor={'white'}>
+      <Scene key='root' backButtonTextStyle={styles.backButtonTextStyle} >
+        <Scene key='StartPage' component={StartPage} title='Start Page' initial />
         <Scene key='MainMenu' component={MainMenu} title='Main Menu' />
-        <Scene key='StartPage' component={StartPage} title='StartPage' initial />
         <Scene key='ListView' component={ToDoList} title='Mission List' />
         <Scene key='Settings' component={Settings} title='Settings' />
         <Scene key='Rewards' component={Rewards} title='Rewards' />
@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: Fonts.amaticBold
   },
-  barButtonTextStyle: {
-    color: 'white'
+  backButtonTextStyle: {
+    color: '#616161'
   },
-  barButtonIconStyle: {
+  backButtonIconStyle: {
     tintColor: 'white'
   }
 })
