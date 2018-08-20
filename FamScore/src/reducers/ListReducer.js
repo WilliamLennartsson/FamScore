@@ -1,5 +1,6 @@
 import {
-    DELETE_ITEM
+    DELETE_ITEM,
+    SHOW_ADD_MISSION
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -14,16 +15,23 @@ const INITIAL_STATE = {
             titleText: 'Hallå',
             infoText: 'grghhthtafeefefe'
         }
-    ]
+    ],
+    visible: false
 }
 
 export default (state = INITIAL_STATE, action) => {
-    console.log(action);
+    console.log('Action: ', action);
     switch (action.type) {
         case DELETE_ITEM:
             return {
                 ...state,
                 list: action.payload
+            }
+        case SHOW_ADD_MISSION:
+            console.log('action payload: ', action.payload);
+            return {
+                ...state,
+                visible: action.payload
             }
         default:
             return state

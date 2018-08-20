@@ -7,7 +7,8 @@ import {
 import { connect } from 'react-redux'
 import { deleteItem } from '../../actions'
 import ListItem from './ListItem'
-
+import AddMission from '../AddMission/AddMission'
+import AddCard from './AddCard'
 
 class MainMenu extends Component {
     renderList() {
@@ -27,7 +28,11 @@ class MainMenu extends Component {
 
                 <ScrollView style={styles.scrollViewStyle}>
 
+                    <AddCard />
+
                     {this.renderList()}
+
+                    <AddMission />
 
                     <View style={{ height: 20, opacity: 0 }} />
 
@@ -42,7 +47,7 @@ const mapStateToProps = ({ listReducer }) => {
     const { list } = listReducer
   
     return { list }
-  }
+}
   
 export default connect(mapStateToProps, { deleteItem })(MainMenu)
 
