@@ -8,7 +8,7 @@ class StartPage extends Component {
     return (
       <ImageBackground
         source={require('../assets/images/lovelovelove.jpg')} style={{ width: '100%', height: '100%' }}
-        >
+      >
       <View style={{
           flex: 1,
           flexDirection: 'column',
