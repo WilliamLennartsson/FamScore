@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, ImageBackground } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
+import { Actions } from 'react-native-router-flux';
 
 class CreateFamily extends Component {
   state = {
@@ -29,11 +30,17 @@ class CreateFamily extends Component {
           value={password}
           onChangeText={(password) => this.setState({ password })}
         />
+      <Button
+        onPress={() => {
+          Actions.MainMenu();
+        }}
+        title='Create'
+        color='#000'
+      />
         <Button
           title='Create'
           color='#000'
         />
-
       </ImageBackground>
     );
   }

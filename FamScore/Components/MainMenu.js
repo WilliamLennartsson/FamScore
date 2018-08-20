@@ -20,7 +20,7 @@ class MainMenu extends Component {
           />
           <Button
             onPress={() => {
-              Actions.Rewards();
+              Actions.ShowRewards();
             }}
             title='Rewards'
             color='#000'
