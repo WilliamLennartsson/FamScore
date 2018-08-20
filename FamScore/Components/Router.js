@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Scene, Router } from 'react-native-router-flux';
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import MainMenu from './MainMenu';
 import StartPage from './StartPage';
 import ToDoList from '../src/components/MainMenu/ToDoList';
@@ -8,11 +8,17 @@ import Settings from './Settings';
 import CreateFamily from './CreateFamily';
 import JoinFamily from './JoinFamily';
 import ShowRewards from './ShowRewards';
+import { showAddMission } from '../src/actions'
+
+
+import { Button } from '../src/components/MainMenu'
 
 import { Fonts } from '../src/utils/Fonts'
 
+class RouterComponent extends Component {
+  
 
-const RouterComponent = () => {
+  render() {
   return (
     <Router navigationBarStyle={styles.sceneStyle} titleStyle={styles.titleStyle} tintColor={'white'}>
       <Scene key='root' backButtonTextStyle={styles.backButtonTextStyle} >
@@ -25,10 +31,11 @@ const RouterComponent = () => {
         <Scene key='JoinFamily' component={JoinFamily} title='Join an existing family' />
       </Scene>
     </Router>
-  );
-};
+  )
+}
+}
 
-export default RouterComponent;
+export default RouterComponent
 
 const styles = StyleSheet.create({
   sceneStyle: {
@@ -50,5 +57,19 @@ const styles = StyleSheet.create({
   },
   backButtonIconStyle: {
     tintColor: 'white'
+  },
+  rightButtonViewStyle: {
+    paddingRight: 15,
+    paddingBottom: 10
+  },
+  rightButtonStyle: {
+    fontSize: 50,
+    color: 'white',
+    zIndex: 10,
+    marginRight: 15,
+    padding: 0,
+    height: 50,
+    width: 50,
+    borderRadius: 50 / 2
   }
 })

@@ -4,30 +4,35 @@ import {
     View,
     StyleSheet
 } from 'react-native'
+import { connect } from 'react-redux'
+import { deleteItem } from '../../actions'
 import ListItem from './ListItem'
+import AddMission from '../AddMission/AddMission'
+import AddCard from './AddCard'
 
-export default class MainMenu extends Component {
+class MainMenu extends Component {
+    renderList() {
+        return this.props.list.map((item, index) => 
+            <ListItem 
+            key={index} 
+            titleText={item.titleText}
+            infoText={item.infoText}
+            points={item.points} 
+            />
+        )
+    }
+
     render() {
         return (
             <View style={styles.viewStyle}>
 
                 <ScrollView style={styles.scrollViewStyle}>
 
-                    <ListItem points="50pts" titleText="Do The Dishes" infoText="Do all the dishes and clean the kitchen" />
+                    <AddCard />
 
-                    <ListItem points="150pts" titleText="Edd?" infoText="Play pubG with squad" />
+                    {this.renderList()}
 
-                    <ListItem points="1000pts" titleText="Holla Holla" infoText="Get dolla" />
-
-                    <ListItem points="200pts" titleText="Laundry" infoText="Laundry all the clothes in the laundry room and iron" />
-
-                    <ListItem points="50pts" titleText="Do The Dishes" infoText="Do all the dishes and clean the kitchen" />
-
-                    <ListItem points="150pts" titleText="Edd?" infoText="Play pubG with squad" />
-
-                    <ListItem points="1000pts" titleText="Holla Holla" infoText="Get dolla" />
-
-                    <ListItem points="2000pts" titleText="Hallå" infoText="Hej hej. Hallå ja" />
+                    <AddMission />
 
                     <View style={{ height: 20, opacity: 0 }} />
 
@@ -37,6 +42,14 @@ export default class MainMenu extends Component {
         )
     }
 }
+
+const mapStateToProps = ({ listReducer }) => {
+    const { list } = listReducer
+  
+    return { list }
+}
+  
+export default connect(mapStateToProps, { deleteItem })(MainMenu)
 
 const styles = StyleSheet.create({
     viewStyle: {
