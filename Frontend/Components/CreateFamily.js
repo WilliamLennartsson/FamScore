@@ -5,10 +5,34 @@ import { Actions } from 'react-native-router-flux';
 
 
 class CreateFamily extends Component {
-  state = {
-    name: '',
-    password: ''
-  };
+
+  constructor(props){
+    super(props);
+    this.state = {
+        name: '',
+        password: ''
+      };
+      this.createFamily = this.createFamily.bind(this);
+  }
+
+  createFamily(){
+    var bodyy = {
+        name: this.state.name,
+        password: this.state.password
+    }
+    fetch('http://localhost:3000/families', {
+      body: JSON.stringify(bodyy),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST' })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (result) {
+      console.log(result);
+    });
+  }
 
   render() {
     const { name } = this.state;
@@ -49,21 +73,7 @@ class CreateFamily extends Component {
       // />
       }
       <Button
-          onPress={() => {
-          fetch('http://localhost:3000/families', {
-            body: '{ "name": "bror", "password": "1234556" }',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            method: 'POST' })
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (result) {
-            console.log(result);
-          });
-        }
-      }
+        onPress={this.createFamily()}
         title='Create'
         color='#000'
       />
