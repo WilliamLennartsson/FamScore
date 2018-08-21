@@ -9,14 +9,13 @@ import CreateFamily from './CreateFamily';
 import JoinFamily from './JoinFamily';
 import ShowRewards from './ShowRewards';
 import { showAddMission } from '../src/actions'
-
-
+import LoginFamily from './LoginFamily'
 import { Button } from '../src/components/MainMenu'
 
 import { Fonts } from '../src/utils/Fonts'
 
 class RouterComponent extends Component {
-  
+
 
   render() {
   return (
@@ -29,6 +28,7 @@ class RouterComponent extends Component {
         <Scene key='ShowRewards' component={ShowRewards} title='Rewards' />
         <Scene key='CreateFamily' component={CreateFamily} title='Create Family' />
         <Scene key='JoinFamily' component={JoinFamily} title='Join an existing family' />
+        <Scene key="LoginFamily" component={LoginFamily} title='Login to your family' />
       </Scene>
     </Router>
   )

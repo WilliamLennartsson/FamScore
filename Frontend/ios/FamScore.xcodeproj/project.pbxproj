@@ -37,10 +37,10 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		54B6300CF0AE4CEEB013DB23 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9ADF276755423B938CE199 /* libReactNativeNavigation.a */; };
-		AC2B30E2227D41E0BABDC5B0 /* amaticSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39F6BBE73C2E490A86DCFEB8 /* amaticSC-Bold.ttf */; };
-		DAABB595D9C94AD8A89E21D7 /* amaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B69A5D2CCF748298BCC34E5 /* amaticSC-Regular.ttf */; };
-		03B1B0A8A1C548B6B27B92ED /* indieFlower.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B43D97124008420599A8572E /* indieFlower.ttf */; };
+		47FD847095C9448AB5B66BCA /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F108A94E6C294AA38BB90FAA /* libReactNativeNavigation.a */; };
+		CE515B234E5E48F68598C332 /* amaticSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18D5F612FA7544CA8CA666CE /* amaticSC-Bold.ttf */; };
+		C9EAA756C2AA4B35B84BAF40 /* amaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC4CE4BC118B442F8387C939 /* amaticSC-Regular.ttf */; };
+		47D123DEE5654628A9F056BA /* indieFlower.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB4C9972259640D6B3D066D5 /* indieFlower.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -346,11 +346,11 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		07EDBC1C9A5A44B2B734D18E /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeNavigation.xcodeproj"; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		4A9ADF276755423B938CE199 /* libReactNativeNavigation.a */ = {isa = PBXFileReference; name = "libReactNativeNavigation.a"; path = "libReactNativeNavigation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		39F6BBE73C2E490A86DCFEB8 /* amaticSC-Bold.ttf */ = {isa = PBXFileReference; name = "amaticSC-Bold.ttf"; path = "../assets/fonts/amaticSC-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8B69A5D2CCF748298BCC34E5 /* amaticSC-Regular.ttf */ = {isa = PBXFileReference; name = "amaticSC-Regular.ttf"; path = "../assets/fonts/amaticSC-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B43D97124008420599A8572E /* indieFlower.ttf */ = {isa = PBXFileReference; name = "indieFlower.ttf"; path = "../assets/fonts/indieFlower.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		22974D615BFE41F599F429A8 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeNavigation.xcodeproj"; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F108A94E6C294AA38BB90FAA /* libReactNativeNavigation.a */ = {isa = PBXFileReference; name = "libReactNativeNavigation.a"; path = "libReactNativeNavigation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		18D5F612FA7544CA8CA666CE /* amaticSC-Bold.ttf */ = {isa = PBXFileReference; name = "amaticSC-Bold.ttf"; path = "../assets/fonts/amaticSC-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AC4CE4BC118B442F8387C939 /* amaticSC-Regular.ttf */ = {isa = PBXFileReference; name = "amaticSC-Regular.ttf"; path = "../assets/fonts/amaticSC-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AB4C9972259640D6B3D066D5 /* indieFlower.ttf */ = {isa = PBXFileReference; name = "indieFlower.ttf"; path = "../assets/fonts/indieFlower.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,7 +379,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				54B6300CF0AE4CEEB013DB23 /* libReactNativeNavigation.a in Frameworks */,
+				47FD847095C9448AB5B66BCA /* libReactNativeNavigation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +566,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				07EDBC1C9A5A44B2B734D18E /* ReactNativeNavigation.xcodeproj */,
+				22974D615BFE41F599F429A8 /* ReactNativeNavigation.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -588,7 +588,7 @@
 				00E356EF1AD99517003FC87E /* FamScoreTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				7998297B1E454CCFAFDD77D8 /* Resources */,
+				0D974219F93E43D9A44EEE2B /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -615,12 +615,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7998297B1E454CCFAFDD77D8 /* Resources */ = {
+		0D974219F93E43D9A44EEE2B /* Resources */ = {
 			isa = "PBXGroup";
 			children = (
-				39F6BBE73C2E490A86DCFEB8 /* amaticSC-Bold.ttf */,
-				8B69A5D2CCF748298BCC34E5 /* amaticSC-Regular.ttf */,
-				B43D97124008420599A8572E /* indieFlower.ttf */,
+				18D5F612FA7544CA8CA666CE /* amaticSC-Bold.ttf */,
+				AC4CE4BC118B442F8387C939 /* amaticSC-Regular.ttf */,
+				AB4C9972259640D6B3D066D5 /* indieFlower.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1072,9 +1072,9 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				AC2B30E2227D41E0BABDC5B0 /* amaticSC-Bold.ttf in Resources */,
-				DAABB595D9C94AD8A89E21D7 /* amaticSC-Regular.ttf in Resources */,
-				03B1B0A8A1C548B6B27B92ED /* indieFlower.ttf in Resources */,
+				CE515B234E5E48F68598C332 /* amaticSC-Bold.ttf in Resources */,
+				C9EAA756C2AA4B35B84BAF40 /* amaticSC-Regular.ttf in Resources */,
+				47D123DEE5654628A9F056BA /* indieFlower.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

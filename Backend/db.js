@@ -14,8 +14,6 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
   } else {
     console.log('Successfully connected to the database!');
     db = client.db('families');
-
-
   }
 });
 
@@ -29,10 +27,21 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
  });
 
  app.get('/families', function(request, response){
-  response.send('sucess');
- })
+  console.log('get families');
+  response.send("hej");
+});
 
  app.post('/families', function(request, response) {
-    response.send(request.body);
-    console.log(request.body);
+   console.log('Testkör');
+    db.collection('families').insertOne({
+      familyName: request.body.familyName,
+      password: request.body.password,
+      nickName: request.body.nickName
+    }, function(error, result){
+        if(error){
+          response.status(500).send(error);
+          return;
+        }
+        response.send(result);
+    });
  });

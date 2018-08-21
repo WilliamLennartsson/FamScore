@@ -3,7 +3,10 @@ import { Button, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 class MainMenu extends Component {
+
+
     render() {
+      console.log(this.props.family); 
       return (
         <View style={{
           flex: 1,
