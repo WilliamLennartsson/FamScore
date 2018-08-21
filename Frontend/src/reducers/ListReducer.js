@@ -1,6 +1,7 @@
 import {
     DELETE_ITEM,
-    SHOW_ADD_MISSION
+    SHOW_ADD_MISSION,
+    ADD_MISSION
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -32,6 +33,12 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 visible: action.payload
+            }
+        case ADD_MISSION:
+            return {
+                ...state,
+                list: action.payload,
+                visible: false
             }
         default:
             return state
