@@ -38,6 +38,9 @@ class StartPage extends Component {
           title='Login to Family'
           color='#841484'
           accessibilityLabel='Bror som är stor!'
+          onPress={() => {
+            Actions.LoginFamily();
+          }}
         />
       <Button
         onPress={() => {

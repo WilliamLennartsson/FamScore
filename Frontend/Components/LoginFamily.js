@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { ImageBackground, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from '../src/components/MainMenu'
-import { Actions } from 'react-native-router-flux';
 
-class CreateFamily extends Component {
+class LoginFamily extends Component {
 
   constructor(props) {
     super(props);
@@ -13,29 +13,16 @@ class CreateFamily extends Component {
         password: '',
         nickName: '',
       };
-      this.createFamily = this.createFamily.bind(this);
+      this.loginFamily = this.loginFamily.bind(this);
   }
 
-  createFamily() {
-    console.log('Create Family ran')
-    const bodyy = {
-        familyName: this.state.familyName,
-        password: this.state.password,
-        nickName: this.state.nickName
-    }
-    fetch('http://localhost:3000/families', {
-      body: JSON.stringify(bodyy),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST' })
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      console.log(result);
-      Actions.MainMenu({ family: { bodyy } });
-    });
+  loginFamily() {
+    fetch('http://localhost:3000/families')
+      .then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        console.log(result);
+      });
 }
   render() {
     const { familyName } = this.state;
@@ -66,25 +53,8 @@ class CreateFamily extends Component {
           value={nickName}
           onChangeText={value => this.setState({ nickName: value })}
         />
-      {
-      // <Button
-      //   onPress={() => {
-      //     fetch('http://localhost:3000')
-      //     .then(function (response) {
-      //       console.log(response);
-      //       return response.text();
-      //     })
-      //     .then(function (result) {
-      //       console.log(result);
-      //     });
-      //     }
-      //   }
-      //   title='Create'
-      //   color='#000'
-      // />
-      }
       <View style={styles.viewStyle}>
-        <Button style={styles.buttonStyle} onPress={() => this.createFamily()}>Create Family</Button>
+        <Button style={styles.buttonStyle} onPress={() => this.loginFamily}>Create Family</Button>
       </View>
       </ImageBackground>
     );
@@ -92,7 +62,7 @@ class CreateFamily extends Component {
 }
 
 
-export default CreateFamily;
+export default LoginFamily;
 
 const styles = {
   buttonStyle: {
