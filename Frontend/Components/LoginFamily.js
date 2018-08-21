@@ -20,7 +20,7 @@ class LoginFamily extends Component {
     fetch('http://localhost:3000/families')
       .then(function (response) {
         return response.json();
-      }).then(function (result) {
+      }).then((result) => {
         console.log(result);
       });
 }
@@ -54,7 +54,7 @@ class LoginFamily extends Component {
           onChangeText={value => this.setState({ nickName: value })}
         />
       <View style={styles.viewStyle}>
-        <Button style={styles.buttonStyle} onPress={() => this.loginFamily}>Create Family</Button>
+        <Button style={styles.buttonStyle} onPress={() => this.loginFamily()}>Create Family</Button>
       </View>
       </ImageBackground>
     );
