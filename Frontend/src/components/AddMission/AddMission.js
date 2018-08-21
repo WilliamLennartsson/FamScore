@@ -45,7 +45,7 @@ class AddMission extends Component {
             return
         }
 
-        addMission({
+        this.props.addMission({
             points: this.state.points,
             titleText: this.state.missionTitle,
             infoText: this.state.missionDescription
@@ -60,16 +60,18 @@ class AddMission extends Component {
     
   render() {
     return (
-      <View style={styles.viewStyle}>
+      <View>
         <Modal
             animationType="slide"
-            transparent={false}
+            transparent={true}
             visible={this.props.visible}
             onRequestClose={() => {
                 alert('New Mission Created!')
             }}
         >
             <View style={styles.viewStyle}>
+                <Text style={styles.topText}>Add New Mission!</Text>
+
                 <View style={styles.inputContainerStyle}>
                     <Input 
                         style={styles.inputStyle} 
@@ -104,10 +106,10 @@ class AddMission extends Component {
                 
                 <View style={styles.buttonContainerStyle}>
                     <Button style={styles.buttonStyle} onPress={this.onAddMissionClick.bind(this)} >Add</Button>
-                    <Button style={styles.buttonStyle}>Cancel</Button>
+                    <Button style={styles.buttonStyle} onPress={() => this.props.showAddMission(false)} >Cancel</Button>
                 </View>
             </View>
-            </Modal>
+        </Modal>
   
       </View>
     )
@@ -116,8 +118,9 @@ class AddMission extends Component {
 
 const mapStateToProps = ({ listReducer }) => {
     const { visible } = listReducer
+    const { points, titleText, infoText } = listReducer.list
   
-    return { visible }
+    return { visible, points, titleText, infoText }
 }
 
 export default connect(mapStateToProps, { showAddMission, addMission })(AddMission)
@@ -125,16 +128,23 @@ export default connect(mapStateToProps, { showAddMission, addMission })(AddMissi
 const styles = StyleSheet.create({
     viewStyle: {
         height: 400,
-        marginTop: 20,
+        width: '90%',
+        alignSelf: 'center',
+        marginTop: 120,
         marginBottom: 20,
         paddingTop: 30,
         paddingBottom: 30,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderColor: '#000',
+        backgroundColor: '#f4f9f4'
     },
     buttonContainerStyle: {
         flex: 2,
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        margin: 10
     },
     buttonStyle: {
         height: 60,
@@ -155,13 +165,20 @@ const styles = StyleSheet.create({
         paddingBottom: 3,
         borderRadius: 5,
         margin: 5,
+        backgroundColor: 'white'
     },
     inputStyle: {
         flex: 1
     },
     styleTextStyle: {
         fontFamily: Fonts.amaticBold,
-        fontSize: 25,
+        fontSize: 20,
         margin: 0
+    },
+    topText: {
+        fontSize: 30,
+        fontFamily: Fonts.amaticBold,
+        alignSelf: 'center',
+        margin: 5
     }
 })

@@ -14,17 +14,17 @@ class MainMenu extends Component {
     renderList() {
         return this.props.list.map((item, index) => 
             <ListItem 
-            key={index} 
-            titleText={item.titleText}
-            infoText={item.infoText}
-            points={item.points} 
+                key={index} 
+                titleText={item.titleText}
+                infoText={item.infoText}
+                points={item.points} 
             />
         )
     }
 
     render() {
         return (
-            <View style={styles.viewStyle}>
+            <View style={[styles.viewStyle, this.props.visible ? { opacity: 0.3 } : '']}>
 
                 <ScrollView style={styles.scrollViewStyle}>
 
@@ -44,9 +44,9 @@ class MainMenu extends Component {
 }
 
 const mapStateToProps = ({ listReducer }) => {
-    const { list } = listReducer
+    const { list, visible } = listReducer
   
-    return { list }
+    return { list, visible }
 }
   
 export default connect(mapStateToProps, { deleteItem })(MainMenu)
