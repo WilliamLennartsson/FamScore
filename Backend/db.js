@@ -27,9 +27,10 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
  });
 
  app.get('/families', function(request, response){
-  console.log('get families');
-  response.send("hej");
-});
+  db.collection('families').find({}).toArray(function(error, result){
+    console.log(result);
+  })
+ })
 
  app.post('/families', function(request, response) {
    console.log('Testkör');
@@ -38,7 +39,7 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
       password: request.body.password,
       nickName: request.body.nickName
     }, function(error, result){
-        if(error){
+        if(error) {
           response.status(500).send(error);
           return;
         }
