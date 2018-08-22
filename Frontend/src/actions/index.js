@@ -1,7 +1,9 @@
 import { 
     DELETE_ITEM,
     SHOW_ADD_MISSION,
-    ADD_MISSION
+    ADD_MISSION,
+    CHECK_IF_ADMIN,
+    SET_ADMIN
 } from './types'
 
 export const deleteListItem = (item) => {
@@ -26,5 +28,12 @@ export const addMission = (mission) => {
     return {
         type: ADD_MISSION,
         payload: mission
+    }
+}
+
+export const setAdmin = (isAdmin) => {
+    return {
+        type: SET_ADMIN,
+        payload: isAdmin
     }
 }
