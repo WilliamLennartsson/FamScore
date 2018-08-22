@@ -46,7 +46,7 @@ class RewardCard extends Component {
                             </View>
 
                             <View style={styles.cardButtonContainerStyle} >
-                                {this.renderIfAdmin}
+                                {this.renderIfAdmin()}
                                 <Button style={styles.buttonStyle}>Redeem!</Button>
                             </View>
 

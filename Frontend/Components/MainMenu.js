@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+
+import { Fonts } from '../src/utils/Fonts'
 
 class MainMenu extends Component {
 
   renderFamily() {
     console.log('familyObject from redux: ', this.props.familyObject.familyName)
     return (
-      <Text>{this.props.familyObject[0].familyName}</Text>
+      <View style={styles.loggedInFamilyContainer}>
+        <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject[0].familyName}</Text>
+        <Text style={styles.loggedInFamilyText}>Nickname: {this.props.familyObject[0].nickName}</Text>
+      </View>
     )
   }
 
@@ -16,16 +21,15 @@ class MainMenu extends Component {
       console.log('familyObject in render: ', this.props.familyObject[0].familyName)
       console.log(this.props.family); 
       return (
-        <View style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
+        <View 
+          style={{
+            flex: 1,
+            paddingTop: 40,
+            alignItems: 'center'
         }}
         >
-        <View style={{ height: 50, width: '90%' }}>
-          <Text style={{ color: '#000', fontSize: 30 }}>{this.renderFamily}</Text>
-        </View>
+        
+        {this.renderFamily()}
         
           <Button
             onPress={() => {
@@ -64,3 +68,17 @@ const mapStateToProps = ({ familyReducer }) => {
 }
 
 export default connect(mapStateToProps, {})(MainMenu)
+
+const styles = StyleSheet.create({
+  loggedInFamilyContainer: {
+    marginTop: 40,
+    marginBottom: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  loggedInFamilyText: {
+    fontSize: 30,
+    fontFamily: Fonts.amaticBold
+  }
+})

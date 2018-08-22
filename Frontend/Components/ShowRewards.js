@@ -8,7 +8,6 @@ export default class ShowRewards extends Component {
         return (
             <View style={styles.viewStyle}>
 
-
                 <ScrollView style={styles.scrollViewStyle}>
 
                     <RewardCard points="500pts" titleText="Fortnite 2h" infoText="Redeem this to play Fortnite for 2h" />
