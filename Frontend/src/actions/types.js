@@ -8,3 +8,6 @@ export const ADD_MISSION = 'ADD_MISSION'
 //RewardsReducer
 export const CHECK_IF_ADMIN = 'CHECK_IF_ADMIN'
 export const SET_ADMIN = 'SET_ADMIN'
+
+//FamilyReducer
+export const SET_FAMILY = 'SET_FAMILY'

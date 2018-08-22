@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import { Button, View } from 'react-native';
+import { connect } from 'react-redux'
+import { Button, View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 class MainMenu extends Component {
 
+  renderFamily() {
+    console.log('familyObject from redux: ', this.props.familyObject.familyName)
+    return (
+      <Text>{this.props.familyObject[0].familyName}</Text>
+    )
+  }
 
     render() {
+      console.log('familyObject in render: ', this.props.familyObject[0].familyName)
       console.log(this.props.family); 
       return (
         <View style={{
@@ -13,7 +21,12 @@ class MainMenu extends Component {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-        }}>
+        }}
+        >
+        <View style={{ height: 50, width: '90%' }}>
+          <Text style={{ color: '#000', fontSize: 30 }}>{this.renderFamily}</Text>
+        </View>
+        
           <Button
             onPress={() => {
               Actions.ListView();
@@ -44,4 +57,10 @@ class MainMenu extends Component {
     }
 }
 
-export default MainMenu;
+const mapStateToProps = ({ familyReducer }) => {
+  const { familyObject } = familyReducer
+
+  return { familyObject }
+}
+
+export default connect(mapStateToProps, {})(MainMenu)

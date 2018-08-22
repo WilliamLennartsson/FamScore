@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { ImageBackground, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from '../src/components/MainMenu';
+
+import { setFamily } from '../src/actions'
 
 class LoginFamily extends Component {
 
@@ -27,7 +30,8 @@ class LoginFamily extends Component {
         console.log(response);
         return response.json();
       }).then((result) => {
-        if(result.length > 0){
+        if (result.length > 0) {
+          this.props.setFamily(result)
           Actions.MainMenu();
         }
 
@@ -71,8 +75,13 @@ class LoginFamily extends Component {
   }
 }
 
+const mapStateToProps = ({ familyReducer }) => {
+  const { familyObject } = familyReducer
 
-export default LoginFamily;
+  return { familyObject }
+}
+
+export default connect(mapStateToProps, { setFamily })(LoginFamily)
 
 const styles = {
   buttonStyle: {

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Actions } from 'react-native-router-flux';
 import { ImageBackground, View } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from '../src/components/MainMenu'
-import { Actions } from 'react-native-router-flux';
+
 
 class CreateFamily extends Component {
 
