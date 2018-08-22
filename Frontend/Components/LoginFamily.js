@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ImageBackground, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { TextField } from 'react-native-material-textfield';
-import { Button } from '../src/components/MainMenu'
+import { Button } from '../src/components/MainMenu';
 
 class LoginFamily extends Component {
 
@@ -17,10 +17,20 @@ class LoginFamily extends Component {
   }
 
   loginFamily() {
-    fetch('http://localhost:3000/families')
-      .then(function (response) {
+    const bodyy = {
+        familyName: this.state.familyName,
+        password: this.state.password,
+        nickName: this.state.nickName
+    }
+    fetch('http://localhost:3000/families?familyName=' + this.state.familyName + '&password=' + this.state.password)
+      .then((response) => {
+        console.log(response);
         return response.json();
       }).then((result) => {
+        if(result.length > 0){
+          Actions.MainMenu();
+        }
+
         console.log(result);
       });
 }
@@ -54,7 +64,7 @@ class LoginFamily extends Component {
           onChangeText={value => this.setState({ nickName: value })}
         />
       <View style={styles.viewStyle}>
-        <Button style={styles.buttonStyle} onPress={() => this.loginFamily()}>Create Family</Button>
+        <Button style={styles.buttonStyle} onPress={() => this.loginFamily()}>Login Family</Button>
       </View>
       </ImageBackground>
     );

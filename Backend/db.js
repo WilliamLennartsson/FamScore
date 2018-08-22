@@ -27,10 +27,18 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
  });
 
  app.get('/families', function(request, response){
-  db.collection('families').find({}).toArray(function(error, result){
-    console.log(result);
-  })
- })
+   console.log(request.query.familyName);
+   console.log(request.query.password);
+  db.collection('families').find({'familyName' : request.query.familyName, 'password' : request.query.password }).toArray(function(error, result){
+    if(result.length > 0 ){
+      response.send(result);
+      console.log(result);
+    } else {
+      console.log('No family found');
+    }
+    console.log('Did we make it dad?');
+  });
+});
 
  app.post('/families', function(request, response) {
    console.log('Testkör');
