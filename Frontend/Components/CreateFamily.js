@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
-import { ImageBackground, View } from 'react-native';
+import { ImageBackground, View, ScrollView } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from '../src/components/MainMenu'
 
@@ -12,17 +12,38 @@ class CreateFamily extends Component {
     this.state = {
         familyName: '',
         password: '',
-        nickName: '',
+        familyMembers: [],
+        numberOfMembers: 0,
       };
       this.createFamily = this.createFamily.bind(this);
+      this.renderFields = this.renderFields.bind(this);
   }
 
   createFamily() {
-    console.log('Create Family ran')
+    console.log('refs: ', this.refs)
+    var newFamilyArray = [];
+
+    for(var i = 0; i < this.state.numberOfMembers; i++){
+      newFamilyArray.push({
+        name: this.refs[`name${i}`].state.text,
+        points: 0,
+      })
+    }
+    console.log(newFamilyArray)
+
+    this.setState({
+      familyMembers: newFamilyArray
+    });
+  console.log('family: ', this.state.familyMembers)
+
+
+
+
     const bodyy = {
         familyName: this.state.familyName,
         password: this.state.password,
-        nickName: this.state.nickName
+        nickName: this.state.nickName,
+        familyMembers: []
     }
     fetch('http://localhost:3000/families', {
       body: JSON.stringify(bodyy),
@@ -35,59 +56,72 @@ class CreateFamily extends Component {
     })
     .then((result) => {
       console.log(result);
-      Actions.MainMenu({ family: { bodyy } });
+      console.log(this.state.numberOfMembers);
+      //{Actions.MainMenu({ family: { bodyy } });}
     });
 }
+
+renderFields() {
+  console.log(this.state.familyMembers);
+  var familyArray = [];
+  var x = this.state.numberOfMembers;
+  for(var i = 0; i < x; i++){
+    familyArray.push(<TextField
+      label='Name'
+      ref={'name'+i}
+      value={this.refs.name}
+    />
+    )
+    console.log('brorhund');
+  }
+  console.log(this.refs);
+  return <View>{familyArray}</View>
+}
+
   render() {
     const { familyName } = this.state;
     const { password } = this.state;
-    const { nickName } = this.state;
+    const { familyMembers } = this.state;
+    const { numberOfMembers } = this.state;
+
     return (
       <ImageBackground source={require('../assets/images/lovelovelove.jpg')} style={{ width: '100%', height: '100%' }} >
-        <TextField
-          label='FamilyName'
-          value={familyName}
-          color='#000'
-          baseColor='#000000'
-          tintColor='#616161'
-          onChangeText={value => this.setState({ familyName: value })}
-        />
-        <TextField
-          label='Password'
-          baseColor='#000'
-          tintColor='#616161'
-          secureTextEntry
-          value={password}
-          onChangeText={value => this.setState({ password: value })}
-        />
-        <TextField
-          label='Nickname'
-          baseColor='#000'
-          tintColor='#616161'
-          value={nickName}
-          onChangeText={value => this.setState({ nickName: value })}
-        />
-      {
-      // <Button
-      //   onPress={() => {
-      //     fetch('http://localhost:3000')
-      //     .then(function (response) {
-      //       console.log(response);
-      //       return response.text();
-      //     })
-      //     .then(function (result) {
-      //       console.log(result);
-      //     });
-      //     }
-      //   }
-      //   title='Create'
-      //   color='#000'
-      // />
-      }
-      <View style={styles.viewStyle}>
-        <Button style={styles.buttonStyle} onPress={() => this.createFamily()}>Create Family</Button>
-      </View>
-      </ImageBackground>
+
+        <ScrollView>
+          <TextField
+            label='FamilyName'
+            value={familyName}
+            color='#000'
+            baseColor='#000000'
+            tintColor='#616161'
+            onChangeText={value => this.setState({ familyName: value })}
+          />
+          <TextField
+            label='Password'
+            baseColor='#000'
+            tintColor='#616161'
+            secureTextEntry
+            value={password}
+            onChangeText={value => this.setState({ password: value })}
+          />
+          <TextField
+            label='Number of members'
+            baseColor='#000'
+            tintColor='#616161'
+            value={+numberOfMembers}
+            onChangeText={value => this.setState({ numberOfMembers: value })}
+          />
+          {this.renderFields()}
+          {console.log('körs denna?')}
+
+        <View style={styles.viewStyle}>
+          <Button style={styles.buttonStyle} onPress={() => this.createFamily()}>Create Family</Button>
+        </View>
+
+        </ScrollView>
+    </ImageBackground>
+
+
     );
   }
 }

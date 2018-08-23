@@ -1,36 +1,27 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Button, View, Text, StyleSheet } from 'react-native';
+import { Button, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-import { Fonts } from '../src/utils/Fonts'
-
 class MainMenu extends Component {
-
-  renderFamily() {
-    console.log('familyObject from redux: ', this.props.familyObject.familyName)
-    return (
-      <View style={styles.loggedInFamilyContainer}>
-        <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject[0].familyName}</Text>
-        <Text style={styles.loggedInFamilyText}>Nickname: {this.props.familyObject[0].nickName}</Text>
-      </View>
-    )
+  constructor(props) {
+    super(props);
+    this.state = {
+        familyName: '',
+        password: '',
+        nickName: '',
+      };
   }
 
+
     render() {
-      console.log('familyObject in render: ', this.props.familyObject[0].familyName)
-      console.log(this.props.family); 
+      console.log(this.props.family);
       return (
-        <View 
-          style={{
-            flex: 1,
-            paddingTop: 40,
-            alignItems: 'center'
-        }}
-        >
-        
-        {this.renderFamily()}
-        
+        <View style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
           <Button
             onPress={() => {
               Actions.ListView();
@@ -61,24 +52,4 @@ class MainMenu extends Component {
     }
 }
 
-const mapStateToProps = ({ familyReducer }) => {
-  const { familyObject } = familyReducer
-
-  return { familyObject }
-}
-
-export default connect(mapStateToProps, {})(MainMenu)
-
-const styles = StyleSheet.create({
-  loggedInFamilyContainer: {
-    marginTop: 40,
-    marginBottom: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  loggedInFamilyText: {
-    fontSize: 30,
-    fontFamily: Fonts.amaticBold
-  }
-})
+export default MainMenu;
