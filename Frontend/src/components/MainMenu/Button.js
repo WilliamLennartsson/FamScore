@@ -19,22 +19,18 @@ const styles = {
     buttonStyle: {
         flex: 1,
         alignSelf: 'stretch',
-        backgroundColor: '#fff',
+        backgroundColor: '#f4f9f4',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#007aff',
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 3,
-        marginBottom: 3
+        borderColor: '#000',
+        margin: 5,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     textStyle: {
-        alignSelf: 'center',
         color: 'black',
         fontSize: 24,
         fontWeight: '600',
-        paddingTop: 5,
-        paddingBottom: 5,
         margin: 5,
         fontFamily: Fonts.amaticBold
     }
