@@ -9,17 +9,17 @@ import { Fonts } from '../src/utils/Fonts'
 class MainMenu extends Component {
 
   renderFamily() {
-    console.log('familyObject from redux: ', this.props.familyObject.familyName)
+    console.log('familyObject from redux: ', this.props.familyObject[0].familyName)
     return (
       <View style={styles.loggedInFamilyContainer}>
-        <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject.familyName}</Text>
-        <Text style={styles.loggedInFamilyText}>Nickname: {this.props.familyObject.nickName}</Text>
+        <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject[0].familyName}</Text>
+        <Text style={styles.loggedInFamilyText}>Nickname: {this.props.familyObject[0].nickName}</Text>
       </View>
     )
   }
 
     render() {
-      console.log('familyObject in render: ', this.props.familyObject.familyName)
+      console.log('familyObject in render: ', this.props.familyObject[0].familyName)
       console.log(this.props.family);
       return (
         <View
