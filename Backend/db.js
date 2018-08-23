@@ -45,7 +45,7 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
     db.collection('families').insertOne({
       familyName: request.body.familyName,
       password: request.body.password,
-      nickName: request.body.nickName
+      familyMembers: request.body.familyMembers
     }, function(error, result){
         if(error) {
           response.status(500).send(error);
