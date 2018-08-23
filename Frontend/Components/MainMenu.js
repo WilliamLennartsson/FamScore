@@ -11,14 +11,14 @@ class MainMenu extends Component {
     console.log('familyObject from redux: ', this.props.familyObject.familyName)
     return (
       <View style={styles.loggedInFamilyContainer}>
-        <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject[0].familyName}</Text>
-        <Text style={styles.loggedInFamilyText}>Nickname: {this.props.familyObject[0].nickName}</Text>
+        <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject.familyName}</Text>
+        <Text style={styles.loggedInFamilyText}>Nickname: {this.props.familyObject.nickName}</Text>
       </View>
     )
   }
 
     render() {
-      console.log('familyObject in render: ', this.props.familyObject[0].familyName)
+      console.log('familyObject in render: ', this.props.familyObject.familyName)
       console.log(this.props.family);
       return (
         <View

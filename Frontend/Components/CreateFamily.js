@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { ImageBackground, View, ScrollView } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from '../src/components/MainMenu'
-
+import { setFamily } from '../src/actions'
 
 class CreateFamily extends Component {
 
@@ -57,6 +58,7 @@ class CreateFamily extends Component {
     .then((result) => {
       console.log(result);
       console.log(this.state.numberOfMembers);
+      this.props.setFamily(bodyy);
       Actions.MainMenu({ family: { bodyy } });
     });
 }
@@ -127,7 +129,13 @@ renderFields() {
 }
 
 
-export default CreateFamily;
+const mapStateToProps = ({ familyReducer }) => {
+  const { familyObject } = familyReducer
+
+  return { familyObject }
+}
+
+export default connect(mapStateToProps, { setFamily })(CreateFamily)
 
 const styles = {
   buttonStyle: {
