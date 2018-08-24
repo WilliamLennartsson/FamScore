@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Scene, Router } from 'react-native-router-flux';
-import { StyleSheet, Text, View } from 'react-native'
+import { Scene, Router, Tabs } from 'react-native-router-flux';
+import { StyleSheet } from 'react-native'
 import MainMenu from './MainMenu';
 import StartPage from './StartPage';
 import ToDoList from '../src/components/MainMenu/ToDoList';
@@ -8,9 +8,8 @@ import Settings from './Settings';
 import CreateFamily from './CreateFamily';
 import JoinFamily from './JoinFamily';
 import ShowRewards from './ShowRewards';
-import { showAddMission } from '../src/actions'
 import LoginFamily from './LoginFamily'
-import { Button } from '../src/components/MainMenu'
+
 
 import { Fonts } from '../src/utils/Fonts'
 

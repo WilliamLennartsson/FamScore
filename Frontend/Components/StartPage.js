@@ -22,7 +22,7 @@ class StartPage extends Component {
           <View style={styles.buttonContainerStyle}>
             <Button onPress={() => { Actions.CreateFamily() }}>
               Create Family
-          </Button>
+            </Button>
           </View>
 
 

@@ -18,20 +18,14 @@ class MainMenu extends Component {
     )
   }
 
-    render() {
-      console.log('familyObject in render: ', this.props.familyObject)
-      console.log('nickname in render: ', this.props.nickName)
-      console.log('props in render: ', this.props)
+  render() {
+    console.log('familyObject in render: ', this.props.familyObject)
+    console.log('nickname in render: ', this.props.nickName)
+    console.log('props in render: ', this.props)
 
-      console.log(this.props.family);
-      return (
-        <View
-          style={{
-            flex: 1,
-            paddingTop: 40,
-            alignItems: 'center'
-        }}
-      >
+    console.log(this.props.family);
+    return (
+      <View style={styles.mainViewStyle}>
 
         <View style={styles.topContainerStyle}>
           {this.renderFamily()}
@@ -40,42 +34,25 @@ class MainMenu extends Component {
         <View style={styles.bottomContainerStyle}>
 
           <View style={styles.buttonContainerStyle}>
-            <Button
-              style={styles.buttonStyle}
-              onPress={() => {
-                Actions.ListView();
-              }}
-            >
+            <Button style={styles.buttonStyle} onPress={() => { Actions.ListView() }}>
               Missions
-                </Button>
+            </Button>
           </View>
 
           <View style={styles.buttonContainerStyle}>
-            <Button
-              style={styles.buttonStyle}
-              onPress={() => {
-                Actions.ShowRewards();
-              }}
-            >
+            <Button style={styles.buttonStyle} onPress={() => { Actions.ShowRewards() }}>
               Rewards
             </Button>
           </View>
 
           <View style={styles.buttonContainerStyle}>
-            <Button
-              style={styles.buttonStyle}
-              onPress={() => {
-                Actions.Settings();
-              }}
-              title='Settings'
-              color='#000'
-            >
+            <Button style={styles.buttonStyle} onPress={() => { Actions.Settings() }}>
               Settings
             </Button>
           </View>
 
         </View>
-        
+
       </View>
     );
   }
@@ -90,6 +67,11 @@ const mapStateToProps = ({ familyReducer }) => {
 export default connect(mapStateToProps, {})(MainMenu)
 
 const styles = StyleSheet.create({
+  mainViewStyle: {
+    flex: 1,
+    paddingTop: 40,
+    alignItems: 'center'
+  },
   loggedInFamilyContainer: {
     alignItems: 'center',
     justifyContent: 'center'
