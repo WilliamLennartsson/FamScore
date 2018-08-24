@@ -51,3 +51,26 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
         response.send(result);
     });
  });
+
+
+
+ // Funkar ej
+ app.put('/families1', function(request, response){
+  console.log('QUERY: ', request.query);
+  console.log('QUERY NAME: ', request.query.name);
+ db.collection('families').find({'familyName' : request.query.familyName, 'password' : request.query.password, 'familyMembers' : { $elemMatch: { 'name' : request.query.name} } }).toArray(function(error, result){
+   if(result.length > 0 ){
+    db.collection('families').update({familyName: request.query.familyName}, {$set: {points: this.query.points}})    
+
+     response.send(result);
+
+   } else {
+     console.log('No family found');
+   }
+ });
+});
+
+app.put('families', function(request, response){
+  db.collection('families').update({familyName: request.query.familyName}, {$set: {points: this.query.points}})    
+
+})

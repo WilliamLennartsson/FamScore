@@ -14,16 +14,16 @@ class MainMenu extends Component {
 
     // Varför funkar nickName men inte this.props.nickName???????????
     var nickName = this.props.nickName;
-    var found = this.props.familyObject.familyMembers.find(function(member) {
+    var currentUser = this.props.familyObject.familyMembers.find(function(member) {
       return member['name'] === nickName;
     });
-    console.log('found: ' + found);
+    console.log('found: ' + currentUser);
 
     return (
       <View style={styles.loggedInFamilyContainer}>
         <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject.familyName}</Text>
         <Text style={styles.loggedInFamilyText}>Nickname: {this.props.nickName}</Text>
-        <Text style={styles.loggedInFamilyText}>Points: </Text>
+        <Text style={styles.loggedInFamilyText}>Points: {currentUser.points}</Text>
       </View>
     )
   }
