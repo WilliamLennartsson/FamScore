@@ -50,6 +50,6 @@ export const setFamily = (familyObject) => {
 export const setLoggedIn = (nickName, isLoggedIn) => {
     return {
         type: SET_LOGGED_IN,
-        payload: nickName, isLoggedIn
+        payload: [nickName, isLoggedIn]
     }
 }

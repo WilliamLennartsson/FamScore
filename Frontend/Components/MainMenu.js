@@ -8,17 +8,28 @@ import { Fonts } from '../src/utils/Fonts'
 
 class MainMenu extends Component {
 
+
   renderFamily() {
     console.log('familyObject from redux: ', this.props.familyObject.familyName)
+
+    // Varför funkar nickName men inte this.props.nickName???????????
+    var nickName = this.props.nickName;
+    var found = this.props.familyObject.familyMembers.find(function(member) {
+      return member['name'] === nickName;
+    });
+    console.log('found: ' + found);
+
     return (
       <View style={styles.loggedInFamilyContainer}>
         <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject.familyName}</Text>
         <Text style={styles.loggedInFamilyText}>Nickname: {this.props.nickName}</Text>
+        <Text style={styles.loggedInFamilyText}>Points: </Text>
       </View>
     )
   }
 
     render() {
+      
       console.log('familyObject in render: ', this.props.familyObject)
       console.log('nickname in render: ', this.props.nickName)
       console.log('props in render: ', this.props)
