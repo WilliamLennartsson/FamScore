@@ -27,12 +27,7 @@ class MainMenu extends Component {
       </View>
     )
   }
-
-    render() {
       
-      console.log('familyObject in render: ', this.props.familyObject)
-      console.log('nickname in render: ', this.props.nickName)
-      console.log('props in render: ', this.props)
   render() {
     console.log('familyObject in render: ', this.props.familyObject)
     console.log('nickname in render: ', this.props.nickName)
