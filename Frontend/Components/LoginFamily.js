@@ -27,15 +27,15 @@ class LoginFamily extends Component {
     }
     fetch('http://localhost:3000/families?familyName=' + this.state.familyName + '&password=' + this.state.password)
       .then((response) => {
-        console.log(response);
+        console.log('asdasd' + response);
         return response.json();
       }).then((result) => {
         if (result.length > 0) {
-          this.props.setFamily(result)
+          console.log('asdasd11' + result[0].json);
+          this.props.setFamily(result[0])
           Actions.MainMenu();
         }
 
-        console.log(result);
       });
 }
   render() {

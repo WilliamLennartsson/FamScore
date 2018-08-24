@@ -35,17 +35,14 @@ class CreateFamily extends Component {
     this.setState({
       familyMembers: newFamilyArray
     });
-  console.log('family: ', this.state.familyMembers)
-
-
-
-
+  
     const bodyy = {
         familyName: this.state.familyName,
         password: this.state.password,
-        nickName: this.state.nickName,
-        familyMembers: newFamilyArray
+        nickName: 'this.state.nickName',
+        familyMembers: newFamilyArray,
     }
+    console.log('family bodyyy: ', bodyy);
     fetch('http://localhost:3000/families', {
       body: JSON.stringify(bodyy),
       headers: {
@@ -56,8 +53,6 @@ class CreateFamily extends Component {
       return response.json();
     })
     .then((result) => {
-      console.log(result);
-      console.log(this.state.numberOfMembers);
       this.props.setFamily(bodyy);
       Actions.MainMenu({ family: { bodyy } });
     });

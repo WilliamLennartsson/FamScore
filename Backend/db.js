@@ -36,21 +36,18 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
     } else {
       console.log('No family found');
     }
-    console.log('Did we make it dad?');
   });
 });
 
  app.post('/families', function(request, response) {
-   console.log('Testkör');
-    db.collection('families').insertOne({
-      familyName: request.body.familyName,
-      password: request.body.password,
-      familyMembers: request.body.familyMembers
-    }, function(error, result){
+    db.collection('families').insertOne(
+      request.body
+      , function(error, result){
         if(error) {
           response.status(500).send(error);
           return;
         }
+        console.log('Posted: ', request.body);
         response.send(result);
     });
  });
