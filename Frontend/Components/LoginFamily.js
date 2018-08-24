@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from '../src/components/MainMenu';
 
-import { setFamily } from '../src/actions'
+import { setFamily, setLoggedIn } from '../src/actions'
 
 class LoginFamily extends Component {
 
@@ -25,7 +25,7 @@ class LoginFamily extends Component {
         password: this.state.password,
         nickName: this.state.nickName
     }
-    fetch('http://localhost:3000/families?familyName=' + this.state.familyName + '&password=' + this.state.password)
+    fetch('http://localhost:3000/families?familyName=' + this.state.familyName + '&password=' + this.state.password + '&name=' + this.state.nickName)
       .then((response) => {
         console.log('asdasd' + response);
         return response.json();
@@ -33,9 +33,9 @@ class LoginFamily extends Component {
         if (result.length > 0) {
           console.log('asdasd11' + result[0].json);
           this.props.setFamily(result[0])
+          this.props.setLoggedIn(this.state.nickName, true);
           Actions.MainMenu();
         }
-
       });
 }
   render() {
@@ -76,12 +76,12 @@ class LoginFamily extends Component {
 }
 
 const mapStateToProps = ({ familyReducer }) => {
-  const { familyObject } = familyReducer
+  const { familyObject, nickName, isLoggedIn } = familyReducer
 
-  return { familyObject }
+  return { familyObject, nickName, isLoggedIn}
 }
 
-export default connect(mapStateToProps, { setFamily })(LoginFamily)
+export default connect(mapStateToProps, { setFamily, setLoggedIn })(LoginFamily)
 
 const styles = {
   buttonStyle: {

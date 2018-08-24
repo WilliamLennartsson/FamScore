@@ -27,9 +27,9 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
  });
 
  app.get('/families', function(request, response){
-   console.log(request.query.familyName);
-   console.log(request.query.password);
-  db.collection('families').find({'familyName' : request.query.familyName, 'password' : request.query.password }).toArray(function(error, result){
+   console.log('QUERY: ', request.query);
+   console.log('QUERY NAME: ', request.query.name);
+  db.collection('families').find({'familyName' : request.query.familyName, 'password' : request.query.password, 'familyMembers' : { $elemMatch: { 'name' : request.query.name} } }).toArray(function(error, result){
     if(result.length > 0 ){
       response.send(result);
       console.log(result);

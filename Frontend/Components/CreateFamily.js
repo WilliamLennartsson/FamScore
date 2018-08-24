@@ -28,6 +28,7 @@ class CreateFamily extends Component {
       newFamilyArray.push({
         name: this.refs[`name${i}`].state.text,
         points: 0,
+        isLoggedIn: false,
       })
     }
     console.log(newFamilyArray)
@@ -39,7 +40,6 @@ class CreateFamily extends Component {
     const bodyy = {
         familyName: this.state.familyName,
         password: this.state.password,
-        nickName: 'this.state.nickName',
         familyMembers: newFamilyArray,
     }
     console.log('family bodyyy: ', bodyy);
@@ -54,7 +54,7 @@ class CreateFamily extends Component {
     })
     .then((result) => {
       this.props.setFamily(bodyy);
-      Actions.MainMenu({ family: { bodyy } });
+      Actions.LoginFamily();
     });
 }
 

@@ -4,7 +4,8 @@ import {
     ADD_MISSION,
     CHECK_IF_ADMIN,
     SET_ADMIN,
-    SET_FAMILY
+    SET_FAMILY,
+    SET_LOGGED_IN
 } from './types'
 
 export const deleteListItem = (item) => {
@@ -43,5 +44,12 @@ export const setFamily = (familyObject) => {
     return {
         type: SET_FAMILY,
         payload: familyObject
+    }
+}
+
+export const setLoggedIn = (nickName, isLoggedIn) => {
+    return {
+        type: SET_LOGGED_IN,
+        payload: nickName, isLoggedIn
     }
 }

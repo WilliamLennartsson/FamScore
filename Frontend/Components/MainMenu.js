@@ -13,13 +13,16 @@ class MainMenu extends Component {
     return (
       <View style={styles.loggedInFamilyContainer}>
         <Text style={styles.loggedInFamilyText}>Family Name: {this.props.familyObject.familyName}</Text>
-        <Text style={styles.loggedInFamilyText}>Nickname: </Text>
+        <Text style={styles.loggedInFamilyText}>Nickname: {this.props.nickName}</Text>
       </View>
     )
   }
 
     render() {
       console.log('familyObject in render: ', this.props.familyObject)
+      console.log('nickname in render: ', this.props.nickName)
+      console.log('props in render: ', this.props)
+
       console.log(this.props.family);
       return (
         <View
@@ -79,9 +82,9 @@ class MainMenu extends Component {
 }
 
 const mapStateToProps = ({ familyReducer }) => {
-  const { familyObject } = familyReducer
+  const { familyObject, nickName, isLoggedIn } = familyReducer
 
-  return { familyObject }
+  return { familyObject, nickName, isLoggedIn }
 }
 
 export default connect(mapStateToProps, {})(MainMenu)

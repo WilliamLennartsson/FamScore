@@ -1,11 +1,14 @@
 import {
-    SET_FAMILY
+    SET_FAMILY, 
+    SET_LOGGED_IN
 } from '../actions/types'
 
 const INITIAL_STATE = {
     familyName: '',
     password: '',
-    familyObject: {}
+    familyObject: {},
+    isLoggedIn: false,
+    nickName: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,7 +19,14 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 familyObject: action.payload
             }
+        case SET_LOGGED_IN:
+            return {
+                ...state,
+                nickName: action.payload,
+                isLoggedIn: action.payload
+            }
         default:
             return state
     }
 }
+

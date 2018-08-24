@@ -11,3 +11,4 @@ export const SET_ADMIN = 'SET_ADMIN'
 
 //FamilyReducer
 export const SET_FAMILY = 'SET_FAMILY'
+export const SET_LOGGED_IN = 'SET_LOGGED_IN'
