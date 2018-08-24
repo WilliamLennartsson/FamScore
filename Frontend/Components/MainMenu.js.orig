@@ -28,11 +28,23 @@ class MainMenu extends Component {
     )
   }
 
+<<<<<<< HEAD
     render() {
       
       console.log('familyObject in render: ', this.props.familyObject)
       console.log('nickname in render: ', this.props.nickName)
       console.log('props in render: ', this.props)
+
+      console.log(this.props.family);
+      return (
+        <View
+          style={{
+            flex: 1,
+            paddingTop: 40,
+            alignItems: 'center'
+        }}
+      >
+=======
   render() {
     console.log('familyObject in render: ', this.props.familyObject)
     console.log('nickname in render: ', this.props.nickName)
@@ -41,6 +53,7 @@ class MainMenu extends Component {
     console.log(this.props.family);
     return (
       <View style={styles.mainViewStyle}>
+>>>>>>> 941f6a1a927501ead9bb36654b9e81be060cc66d
 
         <View style={styles.topContainerStyle}>
           {this.renderFamily()}
