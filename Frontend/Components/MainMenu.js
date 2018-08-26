@@ -8,7 +8,6 @@ import { Fonts } from '../src/utils/Fonts'
 
 class MainMenu extends Component {
 
-
   renderFamily() {
     console.log('familyObject from redux: ', this.props.familyObject.familyName)
 
@@ -27,7 +26,7 @@ class MainMenu extends Component {
       </View>
     )
   }
-      
+
   render() {
     console.log('familyObject in render: ', this.props.familyObject)
     console.log('nickname in render: ', this.props.nickName)

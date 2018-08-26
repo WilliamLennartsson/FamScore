@@ -20,7 +20,7 @@ class AddMission extends Component {
     onMissionTitleChange(text) {
         console.log('text:', text);
         console.log('State: ', this.state)
-        
+
         this.setState({
             missionTitle: text
         })
@@ -40,13 +40,13 @@ class AddMission extends Component {
 
     onAddMissionClick() {
         console.log('onAddMissionClick Clicked!');
-        
+
         if (this.state.missionTitle === '' || this.state.missionDescription === '' || this.state.points === 0) {
             return
         }
 
         this.props.addMission({
-            points: this.state.points,
+            points: (+this.state.points),
             titleText: this.state.missionTitle,
             infoText: this.state.missionDescription
         })
@@ -57,7 +57,7 @@ class AddMission extends Component {
             points: 0
         })
     }
-    
+
   render() {
     return (
       <View>
@@ -73,44 +73,44 @@ class AddMission extends Component {
                 <Text style={styles.topText}>Add New Mission!</Text>
 
                 <View style={styles.inputContainerStyle}>
-                    <Input 
-                        style={styles.inputStyle} 
-                        label="Title: " 
-                        placeholder="Title" 
+                    <Input
+                        style={styles.inputStyle}
+                        label="Title: "
+                        placeholder="Title"
                         styleText={styles.styleTextStyle}
-                        onChangeText={this.onMissionTitleChange.bind(this)} 
+                        onChangeText={this.onMissionTitleChange.bind(this)}
                     />
                 </View>
 
                 <View style={styles.inputContainerStyle}>
-                    <Input 
-                        style={styles.inputStyle} 
-                        label="Points: " 
-                        placeholder="Points" 
-                        styleText={styles.styleTextStyle} 
-                        onChangeText={this.onPointsChange.bind(this)} 
+                    <Input
+                        style={styles.inputStyle}
+                        label="Points: "
+                        placeholder="Points"
+                        styleText={styles.styleTextStyle}
+                        onChangeText={this.onPointsChange.bind(this)}
 
                     />
                 </View>
 
                 <View style={styles.inputContainerStyle}>
-                    <Input 
-                        style={styles.inputStyle} 
-                        label="Description: " 
-                        placeholder="Description" 
-                        styleText={styles.styleTextStyle} 
-                        onChangeText={this.onMissionDescriptionChange.bind(this)} 
+                    <Input
+                        style={styles.inputStyle}
+                        label="Description: "
+                        placeholder="Description"
+                        styleText={styles.styleTextStyle}
+                        onChangeText={this.onMissionDescriptionChange.bind(this)}
 
                     />
                 </View>
-                
+
                 <View style={styles.buttonContainerStyle}>
                     <Button style={styles.buttonStyle} onPress={this.onAddMissionClick.bind(this)} >Add</Button>
                     <Button style={styles.buttonStyle} onPress={() => this.props.showAddMission(false)} >Cancel</Button>
                 </View>
             </View>
         </Modal>
-  
+
       </View>
     )
   }
@@ -119,7 +119,7 @@ class AddMission extends Component {
 const mapStateToProps = ({ listReducer }) => {
     const { visible } = listReducer
     const { points, titleText, infoText } = listReducer.list
-  
+
     return { visible, points, titleText, infoText }
 }
 
