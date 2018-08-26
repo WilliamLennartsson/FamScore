@@ -46,11 +46,11 @@ class RouterComponent extends Component {
                 initial
                 icon={({ focused }) => (
                   <Icon
-                    size={40}
+                    size={25}
                     color={focused ? activeIconColor : iconColor}
-                    type='evilicon'
+                    type='simple-line-icon'
                     name={'heart'}
-                    text={'Home'}
+                    text='Home'
                     textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
                   />
                 )}
@@ -62,10 +62,10 @@ class RouterComponent extends Component {
                 title='Missions'
                 icon={({ focused }) => (
                   <Icon
-                    size={40}
+                    size={25}
                     color={focused ? activeIconColor : iconColor}
-                    type='evilicon'
-                    name='archive'
+                    type='simple-line-icon'
+                    name='pin'
                     text='Missions'
                     textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
                   />
@@ -78,10 +78,10 @@ class RouterComponent extends Component {
                 title='Rewards'
                 icon={({ focused }) => (
                   <Icon
-                    size={30}
+                    size={25}
                     color={focused ? activeIconColor : iconColor}
-                    type='entypo'
-                    name='price-ribbon'
+                    type='simple-line-icon'
+                    name='badge'
                     text='Rewards'
                     textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
                   />
@@ -94,10 +94,10 @@ class RouterComponent extends Component {
                 title='Profile'
                 icon={({ focused }) => (
                   <Icon
-                    size={30}
+                    size={25}
                     color={focused ? activeIconColor : iconColor}
+                    type='simple-line-icon'
                     name='user'
-                    type='entypo'
                     text='Profile'
                     textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
                   />
@@ -119,7 +119,7 @@ export default RouterComponent
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 60,
+    height: 70,
     width: '100%',
     backgroundColor: '#616161',
     justifyContent: 'space-around',

@@ -7,7 +7,7 @@ class Button extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress} style={[styles.buttonStyle, this.props.style]}>
-        <Text style={styles.textStyle}>{this.props.children}</Text>
+        <Text style={[styles.textStyle, this.props.textStyle]}>{this.props.children}</Text>
       </TouchableOpacity>
     )
   }

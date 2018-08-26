@@ -37,7 +37,7 @@ export default (state = INITIAL_STATE, action) => {
         case ADD_MISSION:
             return {
                 ...state,
-                list: [...state.list, action.payload],
+                list: [action.payload, ...state.list],
                 visible: false
             }
         default:

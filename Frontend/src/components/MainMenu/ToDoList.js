@@ -2,15 +2,20 @@ import React, { Component } from 'react'
 import {
     ScrollView,
     View,
-    StyleSheet
+    StyleSheet,
+    LayoutAnimation
 } from 'react-native'
 import { connect } from 'react-redux'
-import { deleteItem } from '../../actions'
+import { deleteItem, showAddMission } from '../../actions'
 import ListItem from './ListItem'
 import AddMission from '../AddMission/AddMission'
 import AddCard from './AddCard'
 
 class MainMenu extends Component {
+    componentWillUpdate() {
+        LayoutAnimation.spring()
+    }
+
     renderList() {
         return this.props.list.map((item, index) => 
             <ListItem 
@@ -28,7 +33,7 @@ class MainMenu extends Component {
 
                 <ScrollView style={styles.scrollViewStyle}>
 
-                    <AddCard />
+                    <AddCard onPress={this.props.showAddMission} />
 
                     {this.renderList()}
 
@@ -49,7 +54,7 @@ const mapStateToProps = ({ listReducer }) => {
     return { list, visible }
 }
   
-export default connect(mapStateToProps, { deleteItem })(MainMenu)
+export default connect(mapStateToProps, { deleteItem, showAddMission })(MainMenu)
 
 const styles = StyleSheet.create({
     viewStyle: {

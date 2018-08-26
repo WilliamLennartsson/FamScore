@@ -9,7 +9,7 @@ import { Fonts } from '../../utils/Fonts'
 class RewardCard extends Component {
 
     componentWillMount() {
-        this.props.setAdmin(false)
+        this.props.setAdmin(true)
     }
 
     renderIfAdmin() {
@@ -148,6 +148,8 @@ const styles = StyleSheet.create({
     buttonStyle: {
         backgroundColor: '#f4f9f4',
         borderColor: '#000',
-        fontFamily: Fonts.amaticBold
+        fontFamily: Fonts.amaticBold,
+        marginLeft: 3,
+        marginRight: 3
     }
 })

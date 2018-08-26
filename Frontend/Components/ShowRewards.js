@@ -1,30 +1,47 @@
-import React, { Component } from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
-import ListItem from '../src/components/MainMenu/ListItem';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { ScrollView, View, StyleSheet, LayoutAnimation } from 'react-native'
+import ListItem from '../src/components/MainMenu/ListItem'
 import RewardCard from '../src/components/RewardCard/RewardCard'
+import AddReward from '../src/components/AddReward/AddReward'
+import { showAddReward } from '../src/actions'
+import AddCard from '../src/components/MainMenu/AddCard'
 
-export default class ShowRewards extends Component {
+class ShowRewards extends Component {
+    componentWillUpdate() {
+        LayoutAnimation.spring()
+    }
+
+    renderAddCard() {
+        console.log('isAdmin in renderAddCard: ', this.props.isAdmin);
+        
+        if (this.props.isAdmin) {
+            return <AddCard onPress={this.props.showAddReward} />
+        }
+    }
+
+    renderRewards() {
+        return this.props.rewardsList.map((item, index) => 
+            <RewardCard 
+                key={index} 
+                titleText={item.titleText}
+                infoText={item.infoText}
+                points={item.points} 
+            />
+        )
+    }
+
     render() {
         return (
-            <View style={styles.viewStyle}>
+            <View style={[styles.viewStyle, this.props.visible ? { opacity: 0.3 } : '']} >
 
                 <ScrollView style={styles.scrollViewStyle}>
 
-                    <RewardCard points="500pts" titleText="Fortnite 2h" infoText="Redeem this to play Fortnite for 2h" />
+                    {this.renderAddCard()}
+                    
+                    {this.renderRewards()}
 
-                    <RewardCard points="1000pts" titleText="Shoping worth 500kr" infoText="Gives you 500kr to shop with" />
-
-                    <RewardCard points="600pts" titleText="Massage 30min" infoText="Redeem this to get a massage for 30min from admin" />
-
-                    <RewardCard points="200pts" titleText="Alonetime 3h" infoText="Redeem this to get some alonetime " />
-
-                    <RewardCard points="50pts" titleText="Do The Dishes" infoText="Do all the dishes and clean the kitchen" />
-
-                    <RewardCard points="150pts" titleText="Edd?" infoText="Play pubG with squad" />
-
-                    <RewardCard points="1000pts" titleText="Holla Holla" infoText="Get dolla" />
-
-                    <RewardCard points="2000pts" titleText="Hallå" infoText="Hej hej. Hallå ja" />
+                    <AddReward />
 
                     <View style={{ height: 20, opacity: 0 }} />
 
@@ -34,6 +51,14 @@ export default class ShowRewards extends Component {
         )
     }
 }
+
+const mapStateToProps = ({ rewardsReducer }) => {
+    const { rewardsList, visible, isAdmin } = rewardsReducer
+
+    return { rewardsList, visible, isAdmin }
+}
+
+export default connect(mapStateToProps, { showAddReward })(ShowRewards)
 
 const styles = StyleSheet.create({
     viewStyle: {

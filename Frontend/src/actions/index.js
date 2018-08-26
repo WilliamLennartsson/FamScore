@@ -2,10 +2,11 @@ import {
     DELETE_ITEM,
     SHOW_ADD_MISSION,
     ADD_MISSION,
-    CHECK_IF_ADMIN,
     SET_ADMIN,
     SET_FAMILY,
-    SET_LOGGED_IN
+    SET_LOGGED_IN,
+    SHOW_ADD_REWARD,
+    ADD_REWARD
 } from './types'
 
 export const deleteListItem = (item) => {
@@ -51,5 +52,19 @@ export const setLoggedIn = (nickName, isLoggedIn) => {
     return {
         type: SET_LOGGED_IN,
         payload: [nickName, isLoggedIn]
+    }
+}
+
+export const showAddReward = (visible) => {
+    return {
+        type: SHOW_ADD_REWARD,
+        payload: visible
+    }
+}
+
+export const addReward = (reward) => {
+    return {
+        type: ADD_REWARD,
+        payload: reward
     }
 }

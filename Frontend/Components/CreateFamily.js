@@ -24,10 +24,11 @@ class CreateFamily extends Component {
   }
 
   createFamily() {
+    const newFamilyArray = [];
     console.log('refs: ', this.refs)
-    var newFamilyArray = [];
+    
 
-    for(var i = 0; i < this.state.numberOfMembers; i++){
+    for (let i = 0; i < this.state.numberOfMembers; i++) {
       newFamilyArray.push({
         name: this.refs[`name${i}`].state.text,
         points: 0,
@@ -63,12 +64,12 @@ class CreateFamily extends Component {
 
 renderFields() {
   console.log(this.state.familyMembers);
-  var familyArray = [];
-  var x = this.state.numberOfMembers;
-  for(var i = 0; i < x; i++){
+  const familyArray = [];
+  const x = this.state.numberOfMembers;
+  for (let i = 0; i < x; i++) {
     familyArray.push(<TextField
       label='Name'
-      ref={'name'+i}
+      ref={'name' + i}
       value={this.refs.name}
     />
     )
