@@ -9,34 +9,142 @@ import CreateFamily from './CreateFamily';
 import JoinFamily from './JoinFamily';
 import ShowRewards from './ShowRewards';
 import LoginFamily from './LoginFamily'
+import Profile from './Profile'
+import { Icon } from 'react-native-elements'
 
 
 import { Fonts } from '../src/utils/Fonts'
 
 class RouterComponent extends Component {
 
-
   render() {
-  return (
-    <Router navigationBarStyle={styles.sceneStyle} titleStyle={styles.titleStyle} tintColor={'white'}>
-      <Scene key='root' backButtonTextStyle={styles.backButtonTextStyle} >
-        <Scene key='StartPage' component={StartPage} title='Start Page' initial />
-        <Scene key='MainMenu' component={MainMenu} title='Main Menu' />
-        <Scene key='ListView' component={ToDoList} title='Mission List' />
-        <Scene key='Settings' component={Settings} title='Settings' />
-        <Scene key='ShowRewards' component={ShowRewards} title='Rewards' />
-        <Scene key='CreateFamily' component={CreateFamily} title='Create Family' />
-        <Scene key='JoinFamily' component={JoinFamily} title='Join an existing family' />
-        <Scene key="LoginFamily" component={LoginFamily} title='Login to your family' />
-      </Scene>
-    </Router>
-  )
-}
+    const activeIconColor = '#c4e3cb'
+    const iconColor = '#f4f9f4'
+
+    return (
+      <Router navigationBarStyle={styles.sceneStyle} titleStyle={styles.titleStyle} tintColor={'white'} backButtonTextStyle={styles.backButtonTextStyle}>
+        <Scene key="root" hideNavBar>
+
+          <Scene key="main" >
+            <Scene key="LoginFamily_Key" component={LoginFamily} title='Login to your family' initial />
+            <Scene key='CreateFamily_Key' component={CreateFamily} title='Create Family' />
+
+            <Tabs
+              hideNavBar
+              showLabel={true}
+              lazy={true}
+              tabStyle={styles.tab}
+              tabBarStyle={styles.tabBar}
+              labelStyle={styles.label}
+              swipeEnabled={false}
+            >
+
+              <Scene
+                key='Family_Key'
+                component={MainMenu}
+                title='Family'
+                initial
+                icon={({ focused }) => (
+                  <Icon
+                    size={40}
+                    color={focused ? activeIconColor : iconColor}
+                    type='evilicon'
+                    name={'heart'}
+                    text={'Home'}
+                    textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
+                  />
+                )}
+              />
+
+              <Scene
+                key='Missions_Key'
+                component={ToDoList}
+                title='Missions'
+                icon={({ focused }) => (
+                  <Icon
+                    size={40}
+                    color={focused ? activeIconColor : iconColor}
+                    type='evilicon'
+                    name='archive'
+                    text='Missions'
+                    textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
+                  />
+                )}
+              />
+
+              <Scene
+                key='Rewards_Key'
+                component={ShowRewards}
+                title='Rewards'
+                icon={({ focused }) => (
+                  <Icon
+                    size={30}
+                    color={focused ? activeIconColor : iconColor}
+                    type='entypo'
+                    name='price-ribbon'
+                    text='Rewards'
+                    textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
+                  />
+                )}
+              />
+
+              <Scene
+                key='Profile_Key'
+                component={Profile}
+                title='Profile'
+                icon={({ focused }) => (
+                  <Icon
+                    size={30}
+                    color={focused ? activeIconColor : iconColor}
+                    name='user'
+                    type='entypo'
+                    text='Profile'
+                    textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
+                  />
+                )}
+              />
+
+            </Tabs>
+
+          </Scene>
+
+        </Scene>
+
+      </Router>
+    )
+  }
 }
 
 export default RouterComponent
 
 const styles = StyleSheet.create({
+  tabBar: {
+    height: 60,
+    width: '100%',
+    backgroundColor: '#616161',
+    justifyContent: 'space-around',
+    borderTopWidth: 1,
+    borderTopColor: '#000'
+  },
+  tab: {
+    color: '#c4e3cb',
+    marginLeft: 10,
+    marginRight: 10,
+    alignSelf: 'center',
+  },
+  activeLabel: {
+    fontFamily: Fonts.amaticBold,
+    color: '#c4e3cb',
+    textDecorationLine: 'underline'
+  },
+  label: {
+    fontSize: 20,
+    fontFamily: Fonts.amaticBold,
+    color: '#f4f9f4'
+  },
+  iconColor: {
+    color: '#f4f9f4'
+  },
   sceneStyle: {
     backgroundColor: '#616161',
     height: 60,

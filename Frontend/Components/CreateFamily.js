@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { ImageBackground, View, ScrollView } from 'react-native';
+import { ImageBackground, View, ScrollView, LayoutAnimation } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 import { Button } from '../src/components/MainMenu'
 import { setFamily } from '../src/actions'
 
 class CreateFamily extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +17,10 @@ class CreateFamily extends Component {
       };
       this.createFamily = this.createFamily.bind(this);
       this.renderFields = this.renderFields.bind(this);
+  }
+
+  componentWillUpdate() {
+    LayoutAnimation.spring()
   }
 
   createFamily() {
@@ -54,7 +57,7 @@ class CreateFamily extends Component {
     })
     .then((result) => {
       this.props.setFamily(bodyy);
-      Actions.LoginFamily();
+      Actions.LoginFamily_Key();
     });
 }
 
@@ -76,10 +79,7 @@ renderFields() {
 }
 
   render() {
-    const { familyName } = this.state;
-    const { password } = this.state;
-    const { familyMembers } = this.state;
-    const { numberOfMembers } = this.state;
+    const { familyName, password, familyMembers, numberOfMembers } = this.state;
 
     return (
       <ImageBackground source={require('../assets/images/lovelovelove.jpg')} style={{ width: '100%', height: '100%' }} >
