@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+import { View, Text, StyleSheet } from 'react-native';
 import { Card, Button } from './index'
 
 import { Fonts } from '../../utils/Fonts'
 
-export default class ListItem extends Component {
+class ListItem extends Component {
 
     constructor(props){
         super(props);
@@ -14,20 +16,35 @@ export default class ListItem extends Component {
 
     missionDone(){
         var info = this.props;
-        fetch('http://localhost:3000/families1?familyName=' + this.state.familyName + '&password=' + this.state.password + '&name=' + this.state.nickName + '&points=' + this.props.points)
-        .then((response) => {
-            return response.json()
-        })
-        .then ((result) => {
-            console.log('missionDone Result', result)
-            
-        })
+        console.log(info);
+        console.log(this.props.familyObject._id);
+        console.log(this.props.points);
+        var fetchBody = {
+          familyObject: this.props.familyObject,
+          familyID: this.props.familyObject._id,
+          nickName: this.props.nickName,
+          points: this.props.points,
+        }
+        console.log(fetchBody);
+        fetch('http://localhost:3000/families', {
+          body: JSON.stringify(fetchBody),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'PUT' })
+          .then((response) => {
+            return response.json();
+          })
+          .then((result) => {
+            console.log('Här vill vi till MainMenu');
+            Actions.MainMenu();
+          });
     }
 
     render() {
         return (
             <View style={styles.viewStyle}>
-                
+
                 <Card style={styles.cardStyle}>
                     <View style={styles.cardItemsStyle}>
 
@@ -48,7 +65,7 @@ export default class ListItem extends Component {
                             </View>
 
                             <View style={styles.cardButtonContainerStyle} >
-                                <Button style={styles.buttonStyle}  >Done!</Button>
+                                <Button style={styles.buttonStyle} onPress={() => this.missionDone()}>Done!</Button>
                                 <Button style={styles.buttonStyle}>Edit</Button>
                             </View>
 
@@ -61,6 +78,14 @@ export default class ListItem extends Component {
         )
     }
 }
+
+const mapStateToProps = ({ familyReducer }) => {
+  const { familyObject, nickName } = familyReducer
+
+  return { familyObject, nickName }
+}
+
+export default connect(mapStateToProps, {})(ListItem)
 
 const styles = StyleSheet.create({
     viewStyle: {

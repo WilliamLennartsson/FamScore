@@ -55,22 +55,54 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
 
 
  // Funkar ej
- app.put('/families1', function(request, response){
-  console.log('QUERY: ', request.query);
-  console.log('QUERY NAME: ', request.query.name);
- db.collection('families').find({'familyName' : request.query.familyName, 'password' : request.query.password, 'familyMembers' : { $elemMatch: { 'name' : request.query.name} } }).toArray(function(error, result){
-   if(result.length > 0 ){
-    db.collection('families').update({familyName: request.query.familyName}, {$set: {points: this.query.points}})    
+ //varför funkar inte .query????
+ // ,  'familyMembers' : { $elemMatch: { 'name' : request.body.nickName} }
+ //, 'familyMembers' : { $elemMatch: { 'name' : request.query.name} }
+ app.put('/families', function(request, response){
+  console.log('QYERY FAMOBJECT IN PUT', request.body.familyObject);
+  console.log('QUERY IN PUT: ', request.body);
+  console.log('QUERY NAME IN PUT: ', request.body.nickName);
+  console.log('QUERY ID IN PUT: ', request.body.familyID);
+  console.log('QUERY POINTS IN PUT', request.body.points);
+  //var newValue = { $inc: {points: request.body.points} }
+  var newValue = { 'familyName': 'WillyMcNilly' }
+  //db.collection('families').updateOne(myQuery, newValue, function(error, result){
+  db.collection('families').updateOne(
+    { 'familyName': request.body.familyObject.familyName, 'familyMembers' : ({ $elemMatch: { 'name' : request.body.nickName} }) },
+    { $inc: {'familyMembers.$.points': request.body.points }},
+//   {
+//     "familyName": request.body.familyObject.familyName,
+//     "password": request.body.familyObject.password,
+//     "familyMembers.name": request.body.familyObject.nickname
+//   },
+//   {
+//     "$set":
+//     {
+//       "familyMembers.$.points": request.body.points
+//     }
+//   }
+// ),
+    function(error, result){
+    if(result){
+      response.send(result);
+    } else {
 
-     response.send(result);
+      // db.bar.update( {user_id : 123456 , "items.item_name" : "my_item_two" } ,
+      //          {$inc : {"items.$.price" : 1} } ,
+      //          false ,
+      //          true);
 
-   } else {
-     console.log('No family found');
-   }
- });
+      // db.products.update(
+      //    { sku: "abc123" },
+      //    { $inc: { quantity: -2, "metrics.orders": 1 } }
+      // )
+
+      // if(error){
+      //   console.log(error)
+      // } else {
+      console.log(result);
+      console.log('No family found');
+      console.log(error);
+    }
+  });
 });
-
-app.put('families', function(request, response){
-  db.collection('families').update({familyName: request.query.familyName}, {$set: {points: this.query.points}})    
-
-})
