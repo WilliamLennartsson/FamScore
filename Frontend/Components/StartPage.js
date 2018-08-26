@@ -25,7 +25,6 @@ class StartPage extends Component {
             </Button>
           </View>
 
-
           <View style={styles.buttonContainerStyle}>
             <Button onPress={() => { Actions.JoinFamily() }}>
               Join Family
