@@ -5,6 +5,25 @@ import { Card, Button } from './index'
 import { Fonts } from '../../utils/Fonts'
 
 export default class ListItem extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.missionDone = this.missionDone.bind(this);
+    }
+
+    missionDone(){
+        var info = this.props;
+        fetch('http://localhost:3000/families1?familyName=' + this.state.familyName + '&password=' + this.state.password + '&name=' + this.state.nickName + '&points=' + this.props.points)
+        .then((response) => {
+            return response.json()
+        })
+        .then ((result) => {
+            console.log('missionDone Result', result)
+            
+        })
+    }
+
     render() {
         return (
             <View style={styles.viewStyle}>
@@ -29,7 +48,7 @@ export default class ListItem extends Component {
                             </View>
 
                             <View style={styles.cardButtonContainerStyle} >
-                                <Button style={styles.buttonStyle}>Done!</Button>
+                                <Button style={styles.buttonStyle}  >Done!</Button>
                                 <Button style={styles.buttonStyle}>Edit</Button>
                             </View>
 
