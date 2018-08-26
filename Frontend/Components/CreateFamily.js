@@ -57,7 +57,7 @@ class CreateFamily extends Component {
     })
     .then((result) => {
       this.props.setFamily(bodyy);
-      Actions.LoginFamily();
+      Actions.LoginFamily_Key();
     });
 }
 
