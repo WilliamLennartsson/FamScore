@@ -14,3 +14,4 @@ export const ADD_REWARD = 'ADD_REWARD'
 //FamilyReducer
 export const SET_FAMILY = 'SET_FAMILY'
 export const SET_LOGGED_IN = 'SET_LOGGED_IN'
+export const SET_SCORE = 'SET_SCORE'

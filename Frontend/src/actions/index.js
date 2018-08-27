@@ -6,7 +6,8 @@ import {
     SET_FAMILY,
     SET_LOGGED_IN,
     SHOW_ADD_REWARD,
-    ADD_REWARD
+    ADD_REWARD,
+    SET_SCORE
 } from './types'
 
 export const deleteListItem = (item) => {
@@ -66,5 +67,22 @@ export const addReward = (reward) => {
     return {
         type: ADD_REWARD,
         payload: reward
+    }
+}
+
+export const setScore = (body) => {
+    console.log('famObj 1 : ', body)
+    console.log('famobj length ', body.familyObject.familyMembers.length)
+    for (var i = 0; i < body.familyObject.familyMembers.length; i++){
+        if (body.familyObject.familyMembers[i].name == body.nickName ){
+            body.familyObject.familyMembers[i].points += body.points;
+            body.nickName = 'greta'
+            console.log('WDOKOAJOKFAOFOAWKFOKAWOFKAOWKFOAWKFOAWOFAWOFKOAK 1 : ')
+        }
+    };
+    console.log('famObj 2 : ', body)
+    return {
+        type: SET_SCORE,
+        payload: body.familyObject
     }
 }

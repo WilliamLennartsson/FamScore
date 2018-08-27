@@ -52,8 +52,6 @@ MongoClient.connect('mongodb://localhost:27017', function(error, client) {
     });
  });
 
-
-
  // Funkar ej
  //varför funkar inte .query????
  // ,  'familyMembers' : { $elemMatch: { 'name' : request.body.nickName} }

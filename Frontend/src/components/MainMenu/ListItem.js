@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card, Button } from './index'
+import { setScore } from '../../actions'
 
 import { Fonts } from '../../utils/Fonts'
 
@@ -37,7 +38,8 @@ class ListItem extends Component {
           })
           .then((result) => {
             console.log('Här vill vi till MainMenu');
-            Actions.MainMenu();
+            this.props.setScore(fetchBody);
+            Actions.Family_Key();
           });
     }
 
@@ -85,7 +87,7 @@ const mapStateToProps = ({ familyReducer }) => {
   return { familyObject, nickName }
 }
 
-export default connect(mapStateToProps, {})(ListItem)
+export default connect(mapStateToProps, {setScore})(ListItem)
 
 const styles = StyleSheet.create({
     viewStyle: {
