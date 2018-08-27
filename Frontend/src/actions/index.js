@@ -76,7 +76,6 @@ export const setScore = (body) => {
     for (var i = 0; i < body.familyObject.familyMembers.length; i++){
         if (body.familyObject.familyMembers[i].name == body.nickName ){
             body.familyObject.familyMembers[i].points += body.points;
-            body.nickName = 'greta'
             console.log('WDOKOAJOKFAOFOAWKFOKAWOFKAOWKFOAWKFOAWOFAWOFKOAK 1 : ')
         }
     };
