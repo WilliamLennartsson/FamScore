@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Scene, Router, Tabs } from 'react-native-router-flux';
+import { Scene, Router, Tabs, Actions } from 'react-native-router-flux';
 import { StyleSheet } from 'react-native'
 import MainMenu from './MainMenu';
 import StartPage from './StartPage';
@@ -44,6 +44,7 @@ class RouterComponent extends Component {
                 component={MainMenu}
                 title='Family'
                 initial
+                on={Actions.refresh}
                 icon={({ focused }) => (
                   <Icon
                     size={25}
