@@ -13,7 +13,7 @@ import AddCard from './AddCard'
 
 class MainMenu extends Component {
     componentWillUpdate() {
-        LayoutAnimation.spring()
+        //LayoutAnimation.spring()
     }
 
     renderList() {

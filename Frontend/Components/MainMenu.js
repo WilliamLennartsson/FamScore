@@ -48,19 +48,7 @@ class MainMenu extends Component {
 
           <View style={styles.buttonContainerStyle}>
             <Button style={styles.buttonStyle} onPress={() => { Actions.ListView() }}>
-              Missions
-            </Button>
-          </View>
-
-          <View style={styles.buttonContainerStyle}>
-            <Button style={styles.buttonStyle} onPress={() => { Actions.ShowRewards() }}>
-              Rewards
-            </Button>
-          </View>
-
-          <View style={styles.buttonContainerStyle}>
-            <Button style={styles.buttonStyle} onPress={() => { Actions.Settings() }}>
-              Settings
+              Add Member
             </Button>
           </View>
 

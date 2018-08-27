@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView, View, StyleSheet, LayoutAnimation } from 'react-native'
-import ListItem from '../src/components/MainMenu/ListItem'
 import RewardCard from '../src/components/RewardCard/RewardCard'
 import AddReward from '../src/components/AddReward/AddReward'
 import { showAddReward } from '../src/actions'
@@ -9,7 +8,7 @@ import AddCard from '../src/components/MainMenu/AddCard'
 
 class ShowRewards extends Component {
     componentWillUpdate() {
-        LayoutAnimation.spring()
+        //LayoutAnimation.spring()
     }
 
     renderAddCard() {

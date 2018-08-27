@@ -73,13 +73,12 @@ export const addReward = (reward) => {
 export const setScore = (body) => {
     console.log('famObj 1 : ', body)
     console.log('famobj length ', body.familyObject.familyMembers.length)
-    for (var i = 0; i < body.familyObject.familyMembers.length; i++){
-        if (body.familyObject.familyMembers[i].name == body.nickName ){
-            body.familyObject.familyMembers[i].points += body.points;
-            console.log('WDOKOAJOKFAOFOAWKFOKAWOFKAOWKFOAWKFOAWOFAWOFKOAK 1 : ')
+    for (let i = 0; i < body.familyObject.familyMembers.length; i++) {
+        if (body.familyObject.familyMembers[i].name === body.nickName) {
+            body.familyObject.familyMembers[i].points += body.points
         }
-    };
-    console.log('famObj 2 : ', body)
+    }
+    console.log('updatedFamilyObject: ', body)
     return {
         type: SET_SCORE,
         payload: body.familyObject

@@ -9,18 +9,18 @@ import { Fonts } from '../../utils/Fonts'
 
 class ListItem extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.missionDone = this.missionDone.bind(this);
     }
 
-    missionDone(){
-        var info = this.props;
+    missionDone() {
+        const info = this.props;
         console.log(info);
         console.log(this.props.familyObject._id);
         console.log(this.props.points);
-        var fetchBody = {
+        const fetchBody = {
           familyObject: this.props.familyObject,
           familyID: this.props.familyObject._id,
           nickName: this.props.nickName,
@@ -87,7 +87,7 @@ const mapStateToProps = ({ familyReducer }) => {
   return { familyObject, nickName }
 }
 
-export default connect(mapStateToProps, {setScore})(ListItem)
+export default connect(mapStateToProps, { setScore })(ListItem)
 
 const styles = StyleSheet.create({
     viewStyle: {
