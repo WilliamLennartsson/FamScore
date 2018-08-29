@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { Scene, Router, Tabs, Actions } from 'react-native-router-flux';
+import { Icon } from 'react-native-elements'
 import { StyleSheet } from 'react-native'
 import MainMenu from './MainMenu';
-import StartPage from './StartPage';
 import ToDoList from '../src/components/MainMenu/ToDoList';
-import Settings from './Settings';
 import CreateFamily from './CreateFamily';
-import JoinFamily from './JoinFamily';
 import ShowRewards from './ShowRewards';
 import LoginFamily from './LoginFamily'
 import Profile from './Profile'
-import { Icon } from 'react-native-elements'
 
 
 import { Fonts } from '../src/utils/Fonts'
