@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { ImageBackground, View, ScrollView, LayoutAnimation } from 'react-native';
-import { TextField } from 'react-native-material-textfield';
+import { View, ScrollView, LayoutAnimation } from 'react-native'
+import { TextField } from 'react-native-material-textfield'
+import { Dropdown } from 'react-native-material-dropdown'
 import { Button } from '../src/components/MainMenu'
 import { setFamily } from '../src/actions'
 
@@ -10,13 +11,13 @@ class CreateFamily extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        familyName: '',
-        password: '',
-        familyMembers: [],
-        numberOfMembers: 0,
-      };
-      this.createFamily = this.createFamily.bind(this);
-      this.renderFields = this.renderFields.bind(this);
+      familyName: '',
+      password: '',
+      familyMembers: [],
+      numberOfMembers: 0,
+    };
+    this.createFamily = this.createFamily.bind(this);
+    this.renderFields = this.renderFields.bind(this);
   }
 
   componentWillUpdate() {
@@ -26,7 +27,7 @@ class CreateFamily extends Component {
   createFamily() {
     const newFamilyArray = [];
     console.log('refs: ', this.refs)
-    
+
 
     for (let i = 0; i < this.state.numberOfMembers; i++) {
       newFamilyArray.push({
@@ -40,60 +41,70 @@ class CreateFamily extends Component {
     this.setState({
       familyMembers: newFamilyArray
     });
-  
+
     const bodyy = {
-        familyName: this.state.familyName,
-        password: this.state.password,
-        familyMembers: newFamilyArray,
+      familyName: this.state.familyName,
+      password: this.state.password,
+      familyMembers: newFamilyArray,
     }
-    console.log('family bodyyy: ', bodyy);
+    console.log('family bodyyy: ', bodyy)
     fetch('http://localhost:3000/families', {
       body: JSON.stringify(bodyy),
       headers: {
         'Content-Type': 'application/json'
       },
-      method: 'POST' })
-    .then((response) => {
-      return response.json();
+      method: 'POST'
     })
-    .then((result) => {
-      this.props.setFamily(bodyy);
-      Actions.LoginFamily_Key();
-    });
-}
-
-renderFields() {
-  console.log(this.state.familyMembers);
-  const familyArray = [];
-  const x = this.state.numberOfMembers;
-  for (let i = 0; i < x; i++) {
-    familyArray.push(<TextField
-      label='Name'
-      ref={'name' + i}
-      value={this.refs.name}
-    />
-    )
-    console.log('brorhund');
+      .then((response) => {
+        return response.json();
+      })
+      .then(() => {
+        this.props.setFamily(bodyy);
+        Actions.LoginFamily_Key();
+      })
   }
-  console.log(this.refs);
-  return <View>{familyArray}</View>
-}
+
+  renderFields() {
+    console.log(this.state.familyMembers);
+    const familyArray = [];
+    const x = this.state.numberOfMembers;
+    for (let i = 0; i < x; i++) {
+      const famMemberReference = 'name' + i
+      familyArray.push(<TextField
+        label='Name'
+        ref={famMemberReference}
+        value={this.refs.name}
+      />
+      )
+    }
+    console.log(this.refs);
+    return <View>{familyArray}</View>
+  }
 
   render() {
-    const { familyName, password, familyMembers, numberOfMembers } = this.state;
+    const { familyName, password, numberOfMembers } = this.state;
+
+    const data = []
+
+    // Add number of values to Dropdown
+    for (let i = 0; i <= 10; i++) {
+      data.push({ value: i })
+    }
 
     return (
-      <ImageBackground source={require('../assets/images/lovelovelove.jpg')} style={{ width: '100%', height: '100%' }} >
+      <View style={styles.container}>
 
         <ScrollView>
+
           <TextField
             label='FamilyName'
-            value={familyName}
             color='#000'
             baseColor='#000000'
             tintColor='#616161'
+            value={familyName}
             onChangeText={value => this.setState({ familyName: value })}
           />
+
           <TextField
             label='Password'
             baseColor='#000'
@@ -102,25 +113,30 @@ renderFields() {
             value={password}
             onChangeText={value => this.setState({ password: value })}
           />
-          <TextField
-            label='Number of members'
+
+          <Dropdown 
+            label="Number of Members"
             baseColor='#000'
-            tintColor='#616161'
-            value={+numberOfMembers}
+            tintColor='#8aae92'
+            data={data}
+            value={numberOfMembers}
             onChangeText={value => this.setState({ numberOfMembers: value })}
           />
-          {this.renderFields()}
-          {console.log('körs denna?')}
 
-        <View style={styles.viewStyle}>
-          <Button style={styles.buttonStyle} onPress={() => this.createFamily()}>Create Family</Button>
-        </View>
+          {this.renderFields()}
+
+          <View style={styles.viewStyle}>
+            <Button style={styles.buttonStyle} onPress={() => this.createFamily()}>Create Family</Button>
+          </View>
+
+          <View 
+            style={{ margin: 20 }}
+          />
 
         </ScrollView>
-    </ImageBackground>
+      </View>
 
-
-    );
+    )
   }
 }
 
@@ -141,5 +157,9 @@ const styles = {
   viewStyle: {
     height: 60,
     justifyContent: 'center'
+  },
+  container: {
+    paddingLeft: 20,
+    paddingRight: 20
   }
 }

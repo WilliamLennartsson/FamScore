@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Alert, ImageBackground, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux'
 import { Button } from '../src/components/MainMenu'
 
@@ -7,9 +7,6 @@ import { Button } from '../src/components/MainMenu'
 class StartPage extends Component {
   render() {
     return (
-      <ImageBackground
-        source={require('../assets/images/lovelovelove.jpg')} style={{ width: '100%', height: '100%' }}
-      >
         <View
           style={{
             flex: 1,
@@ -44,8 +41,7 @@ class StartPage extends Component {
           </View>
           
         </View>
-      </ImageBackground>
-    );
+    )
   }
 }
 
